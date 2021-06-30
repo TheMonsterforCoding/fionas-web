@@ -1,0 +1,44 @@
+.container {
+  background: var(--pink-200);
+  padding: 2rem;
+
+  .content {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      margin-left: 2rem;
+      color: var(--background);
+    }
+  }
+  // .content {
+  //   max-width: 1120px;
+  //   margin: 0 auto;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+
+  //   > img {
+  //     max-height: 45px;
+  //   }
+
+  //   > div {
+  //     display: flex;
+  //     gap: 1rem;
+
+  //     button {
+  //       height: 2.5rem;
+  //       svg {
+  //         fill: var(--white);
+  //       }
+  //     }
+
+  //     button + button {
+  //       padding: 0 0.75rem;
+  //     }
+  //   }
+  // }
+}
