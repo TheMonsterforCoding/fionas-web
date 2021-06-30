@@ -10,7 +10,7 @@ export function Header() {
       <div className={styles.content}>
           <div>
             <Image src={logoImg} alt="Logo Fiona's Pet Shop" draggable="false" />
-            <span>Fiona is Pet Shop</span>
+            <span>Fionas Pet Shop</span>
           </div>
           <button>Login</button>
         </div>
