@@ -5,8 +5,8 @@
 }
 
 :root {
-  --white: #ffffff;
-  --background: #f8f8f8;
+  --white: #fff;
+  --background: #FCEFF9;
   --separator: #a8a8b3;
   --text-ligh: #3b3b44;
   --black: #000;
@@ -25,14 +25,14 @@
 }
 
 body {
-  background: var(--gray-50);
+  background: var(--background);
 }
 
 body,
 input,
 textarea,
 button {
-  font: 500 1rem Inter, sans-serif;
+  font: 400 1rem Roboto, sans-serif;
   color: var(--gray-500);
 }
 
@@ -42,8 +42,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
-  font-family: Lexend, sans-serif;
+  font-weight: 900;
+  font-family: Roboto, sans-serif;
   color: var(--gray-800);
 }
 

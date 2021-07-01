@@ -1,37 +1,57 @@
 .container {
   background: var(--background);
-  padding: 1.5rem;
+  margin-top: 1rem;
 
   .content {
-    max-width: 1120px;
+    background: var(--white);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
+    max-width: 1120px;
+    padding: 1rem 2rem;
+    border-radius: 30px 30px 0 0;
 
     .actions {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 3rem;
 
       a {
-        color: var(--text);
+        color: var(--text-ligh);
         text-decoration: none;
         font-weight: 600;
+        font-size: 1.1rem;
+
+        transition: 0.2s;
 
         &:hover {
-          opacity: 0.5;
+          opacity: 0.7;
         }
       }
     }
 
     button {
       background: var(--pink-300);
-      padding: 1rem 1rem 1rem 0.6rem;
+      border-radius: 50%;
+      padding: 5px 5px 0 0;
+      height: 3rem;
+      width: 3rem;
+      border: 0;
+
+      transition: 0.2s;
 
       svg {
-        fill: var(--background);
+        height: 20px;
+        width: 20px;
+        fill: var(--white);
+      }
+
+      &:hover {
+        opacity: 0.7;
       }
     }
+
+
   }
 }

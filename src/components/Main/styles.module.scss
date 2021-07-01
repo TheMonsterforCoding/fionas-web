@@ -1,11 +1,42 @@
 .container {
   background: var(--background);
-  padding: 2rem;
-  height: calc(100vh - 4rem)
-
+  height: 100%;
 }
 
 .content {
+  display: flex;
+  height: calc(100vh - 7rem);
+  border-radius: 0 0 30px 30px;
+
+  background: var(--white);
   max-width: 1120px;
   margin: 0 auto;
+  padding: 2rem;
+
+  .left {
+    margin-left: 4rem;
+    display: grid;
+    grid-template-rows: auto;
+
+    h1 {
+      font-size: 4.5rem;
+      display:flex;
+      align-items: flex-end;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--pink-300);
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+
+    img {
+      width: 40rem;
+    }
+  }
 }
