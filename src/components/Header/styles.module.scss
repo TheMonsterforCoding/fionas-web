@@ -1,6 +1,6 @@
 .container {
-  background: var(--pink-200);
-  padding: 2rem;
+  background: var(--background);
+  padding: 1.5rem;
 
   .content {
     max-width: 1120px;
@@ -9,36 +9,29 @@
     justify-content: space-between;
     align-items: center;
 
-    span {
-      margin-left: 2rem;
-      color: var(--background);
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    button {
+      background: var(--pink-300);
+      padding: 1rem 1rem 1rem 0.6rem;
+
+      svg {
+        fill: var(--background);
+      }
     }
   }
-  // .content {
-  //   max-width: 1120px;
-  //   margin: 0 auto;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-
-  //   > img {
-  //     max-height: 45px;
-  //   }
-
-  //   > div {
-  //     display: flex;
-  //     gap: 1rem;
-
-  //     button {
-  //       height: 2.5rem;
-  //       svg {
-  //         fill: var(--white);
-  //       }
-  //     }
-
-  //     button + button {
-  //       padding: 0 0.75rem;
-  //     }
-  //   }
-  // }
 }
