@@ -16,17 +16,65 @@
   .left {
     margin-left: 4rem;
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 2fr 1fr 1fr 4fr;
+
+    span {
+      display: flex;
+      align-items: flex-end;
+      color: var(--separator);
+    }
 
     h1 {
       font-size: 4.5rem;
-      display:flex;
-      align-items: flex-end;
     }
 
     h2 {
       font-size: 2rem;
       color: var(--pink-300);
+    }
+
+    .actions {
+      > div {
+        margin-bottom: 2rem;
+        border-left: 3px solid var(--pink-100);
+        padding-left: 0.5rem;
+
+        span {
+          display: flex;
+          align-items: flex-start;
+          color: var(--separator);
+          &:first-child {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+
+      button {
+        height: 3.125rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        background: var(--pink-300);
+        color: var(--white);
+        padding: 0 2rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 0;
+
+        transition: 0.2s;
+
+        &.outlined {
+          background: var(--white);
+          border: 1px solid var(--black);
+          color: var(--black);
+        }
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
   }
 

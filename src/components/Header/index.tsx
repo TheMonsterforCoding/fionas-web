@@ -66,10 +66,10 @@ export function Header() {
             </g>
           </svg>
 
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Contact</a>
+          <a href="#" className={styles.active}>Home</a>
+          <a href="#">Sobre nós</a>
+          <a href="#">Serviços</a>
+          <a href="#">Contato</a>
         </div>
 
         <button type="button">
