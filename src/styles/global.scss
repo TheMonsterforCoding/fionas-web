@@ -6,7 +6,7 @@
 
 :root {
   --white: #fff;
-  --background: #FCEFF9;
+  --background: #fceff9;
   --separator: #a8a8b3;
   --text-ligh: #3b3b44;
   --black: #000;
@@ -31,9 +31,12 @@ body {
 body,
 input,
 textarea,
-button {
-  font: 400 1rem Roboto, sans-serif;
-  color: var(--gray-500);
+button,
+fieldset,
+span {
+  font: 400 1rem 'Roboto', sans-serif;
+  color: var(--black);
+  border: none;
 }
 
 h1,
@@ -44,7 +47,7 @@ h5,
 h6 {
   font-weight: 900;
   font-family: Roboto, sans-serif;
-  color: var(--gray-800);
+  color: var(--black);
 }
 
 h1 {
@@ -57,6 +60,19 @@ h2 {
 
 button {
   cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: var(--black);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 1.4rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 1080px) {
