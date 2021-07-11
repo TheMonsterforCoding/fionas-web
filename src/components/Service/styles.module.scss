@@ -1,0 +1,39 @@
+.containerGrid {
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+
+  width: 18rem;
+  height: 25rem;
+
+  .gridTitle {
+    background: var(--pink-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .gridDescription {
+    background: var(--pink-100);
+    background-image: url('../../assets/paw.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    padding: 1.5rem 2rem;
+
+    text-align: justify;
+  }
+
+  .gridButton {
+    background: var(--pink-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+}

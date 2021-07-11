@@ -1,6 +1,7 @@
-import Image from 'next/Image'
+import Image from 'next/image'
 
 import DogImg from '../../assets/dog-day.jpg'
+import { Button } from '../Button'
 
 import styles from './styles.module.scss'
 
@@ -17,7 +18,7 @@ export function Main() {
               <span>Conheça nossos melhores planos</span>
               <span>Presenteie seu mascote</span>
             </div>
-            <button>Nossos Serviços</button>
+            <Button>Nossos Serviços</Button>
           </div>
         </div>
         <div className={styles.right}>

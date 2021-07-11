@@ -7,6 +7,8 @@
   display: flex;
   height: calc(100vh - 7rem);
   border-radius: 0 0 30px 30px;
+  border: 1px solid var(--pink-300);
+  border-top: none;
 
   background: var(--white);
   max-width: 1120px;
@@ -50,33 +52,6 @@
           &:first-child {
             margin-bottom: 0.5rem;
           }
-        }
-      }
-
-      button {
-        height: 3.125rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        background: var(--pink-300);
-        color: var(--white);
-        padding: 0 2rem;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        border: 0;
-
-        transition: 0.2s;
-
-        &.outlined {
-          background: var(--white);
-          border: 1px solid var(--black);
-          color: var(--black);
-        }
-
-        &:hover {
-          opacity: 0.7;
         }
       }
     }
