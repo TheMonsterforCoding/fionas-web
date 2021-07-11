@@ -13,6 +13,10 @@
   margin: 0 auto;
   padding: 2rem;
 
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
+
   .left {
     margin-left: 4rem;
     display: grid;
@@ -82,10 +86,14 @@
     display: flex;
     justify-content: center;
     flex: 1;
-    padding: 2rem 0;
+    padding: 24px 0;
 
     img {
-      width: 30rem;
+      width: 480px;
+    }
+
+    @media (max-width: 800px) {
+      display: none;
     }
   }
 }
