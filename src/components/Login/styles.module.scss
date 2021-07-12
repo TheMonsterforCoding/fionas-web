@@ -1,106 +1,131 @@
 .container {
   display: flex;
+  align-items: center;
   justify-content: center;
 
   height: 100%;
+  width: 100%;
   background: var(--background);
 
   .content {
     margin: 20vh;
+
     display: grid;
-    grid-template-rows: 1fr 8fr 2fr;
+    grid-template-rows: 1fr 4fr 1fr;
     justify-items: center;
-    align-items: center;
 
-    height: 60vh;
-    width: 30vw;
-    border-radius: 30px;
-
-    background: var(--white);
+    height: 65vh;
+    width: 25vw;
     padding: 2rem;
+    min-width: 373px;
 
-    form {
-      width: 90%;
+    border-radius: 30px;
+    border: 1px solid var(--pink-300);
+    background: var(--white);
 
-      fieldset {
-        .inputBlock {
-          display: grid;
+    .gridHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-          label {
-            color: var(--separator);
-            margin: 0.5rem 0 0.5rem 0;
-            line-height: 1.5rem;
-          }
+      width: 100%;
 
-          input {
-            color: var(--separator);
-            border: 1px solid var(--pink-300);
-            border-radius: 5px;
-            font-size: 1rem;
+      img {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
 
-            padding-left: 12px;
-            height: 2.7rem;
-          }
+    .gridForm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-          input::placeholder {
-            color: var(--separator);
-            font-size: 0.8rem;
+      width: 100%;
+
+      form {
+        display: grid;
+        grid-template-rows: 3fr 1fr;
+        align-items: center;
+        width: 100%;
+
+        fieldset {
+          .inputBlock {
+            display: grid;
+
+            label {
+              color: var(--separator);
+              margin: 0.5rem 0 0.5rem 0;
+              line-height: 1.5rem;
+            }
+
+            input {
+              color: var(--separator);
+              border: 1px solid var(--pink-300);
+              border-radius: 5px;
+              font-size: 1rem;
+
+              padding-left: 12px;
+              height: 2.7rem;
+            }
+
+            input::placeholder {
+              color: var(--separator);
+              font-size: 0.8rem;
+            }
           }
         }
-      }
 
-      > button {
-        margin-top: 1rem;
+        > button {
+          margin-top: 1.5rem;
 
-        height: 3.125rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        background: var(--pink-300);
-        color: var(--white);
-        padding: 0 2rem;
+          height: 3.125rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          background: var(--pink-300);
+          color: var(--white);
+          padding: 0 2rem;
 
-        display: flex;
-        align-items: center;
+          transition: 0.2s;
 
-        border: 0;
-
-        transition: 0.2s;
-
-        &:hover {
-          opacity: 0.7;
+          &:hover {
+            opacity: 0.7;
+          }
         }
       }
     }
 
-    footer {
-      .separator {
-        font-size: 0.875rem;
-        color: var(--separator);
+    .gridFooter {
+      footer {
+        .separator {
+          font-size: 0.875rem;
+          color: var(--separator);
 
-        margin: 1rem 0;
-        display: flex;
-        align-items: center;
+          margin: 1rem 0;
+          display: flex;
+          align-items: center;
 
-        &::before {
-          content: '';
-          height: 1px;
-          width: 8rem;
-          background: var(--separator);
-          margin-right: 1rem;
+          &::before {
+            content: '';
+            height: 1px;
+            width: 8rem;
+            background: var(--separator);
+            margin-right: 1rem;
+          }
+
+          &::after {
+            content: '';
+            height: 1px;
+            width: 8rem;
+            background: var(--separator);
+            margin-left: 1rem;
+          }
         }
 
-        &::after {
-          content: '';
-          height: 1px;
-          width: 8rem;
-          background: var(--separator);
-          margin-left: 1rem;
-        }
-      }
-
-      span {
-        a {
-          color: var(--pink-300);
+        span {
+          a {
+            color: var(--pink-300);
+          }
         }
       }
     }

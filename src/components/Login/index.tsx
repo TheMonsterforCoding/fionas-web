@@ -1,10 +1,14 @@
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 
 import api from '../../services/api'
 
+import BackImg from '../../assets/back.svg'
+
 import styles from './styles.module.scss'
+import Link from 'next/link'
 
 export function Login() {
   const router = useRouter()
@@ -39,44 +43,56 @@ export function Login() {
       </div>
 
       <div className={styles.content}>
-        <h1>Fazer Login</h1>
+        <div className={styles.gridHeader}>
+          <Link href="/" passHref>
+            <a>
+              <Image src={BackImg} alt="Voltar" />
+            </a>
+          </Link>
+          <h1>Fazer Login</h1>
+          <div />
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <div className={styles.inputBlock}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-                placeholder="exemplo@exemplo.com"
-                required
-              />
-            </div>
+        <div className={styles.gridForm}>
+          <form onSubmit={handleSubmit}>
+            <fieldset>
+              <div className={styles.inputBlock}>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                  placeholder="exemplo@exemplo.com"
+                  required
+                />
+              </div>
 
-            <div className={styles.inputBlock}>
-              <label htmlFor="password">Contrasenha</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-                placeholder="**********"
-                required
-              />
-            </div>
-          </fieldset>
+              <div className={styles.inputBlock}>
+                <label htmlFor="password">Contrasenha</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+                  placeholder="**********"
+                  required
+                />
+              </div>
+            </fieldset>
 
-          <button type="submit">Login</button>
-        </form>
+            <button type="submit">Login</button>
+          </form>
+        </div>
 
-        <footer>
-          <div className={styles.separator}>ou</div>
-          <span>
-            Crie sua conta <a href="#">Aqui!</a>
-          </span>
-        </footer>
+        <div className={styles.gridFooter}>
+          <footer>
+            <div className={styles.separator}>ou</div>
+            <span>
+              Crie sua conta <a href="#">Aqui!</a>
+            </span>
+          </footer>
+        </div>
       </div>
     </div>
   )
