@@ -59,13 +59,7 @@
 
   .right {
     display: flex;
-    justify-content: center;
-    flex: 1;
-    padding: 24px 0;
-
-    img {
-      width: 480px;
-    }
+    align-items: center;
 
     @media (max-width: 800px) {
       display: none;
