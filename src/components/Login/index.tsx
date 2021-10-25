@@ -13,7 +13,7 @@ import Link from 'next/link'
 export function Login() {
   const router = useRouter()
 
-  const [email, setEmail] = useState('')
+  const [cpf, setCpf] = useState('')
   const [password, setPassword] = useState('')
 
   async function handleSubmit(event: FormEvent) {
@@ -22,7 +22,7 @@ export function Login() {
 
     await api
       .post('login', {
-        email: email,
+        cpf: cpf,
         password: password
       })
       .then(function (response) {
@@ -57,12 +57,12 @@ export function Login() {
           <form onSubmit={handleSubmit}>
             <fieldset>
               <div className={styles.inputBlock}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="cpf">CPF</label>
                 <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={event => setEmail(event.target.value)}
+                  type="cpf"
+                  id="cpf"
+                  value={cpf}
+                  onChange={event => setCpf(event.target.value)}
                   placeholder="exemplo@exemplo.com"
                   required
                 />
@@ -75,7 +75,7 @@ export function Login() {
                   id="password"
                   value={password}
                   onChange={event => setPassword(event.target.value)}
-                  placeholder="**********"
+                  placeholder="xxxxxxxxxxx"
                   required
                 />
               </div>

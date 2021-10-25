@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import LogoImg from '../../assets/dog.svg'
+import LogoImg from '../../assets/fionas.png'
 import UserImg from '../../assets/user.svg'
 
 import styles from './styles.module.scss'
