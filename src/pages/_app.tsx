@@ -1,9 +1,14 @@
 import type { AppProps } from 'next/app'
+import { UsersProvider } from '../hooks/useUsers'
 
 import '../styles/global.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <UsersProvider>
+      <Component {...pageProps} />
+    </UsersProvider>
+  )
 }
 
 export default MyApp

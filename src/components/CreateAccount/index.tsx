@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Router from 'next/router'
+import toast, { Toaster } from 'react-hot-toast'
 
+import { useUsers } from '../../hooks/useUsers'
 import BackImg from '../../assets/back.svg'
 import styles from './styles.module.scss'
 
 export function CreateAccount() {
+  const { createUser } = useUsers()
+
   const [cpf, setCpf] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -19,12 +24,53 @@ export function CreateAccount() {
   const [state, setState] = useState(true)
   const [userType, setUserType] = useState(false) // Cliente
 
-  function handleSubmit() {
-    console.log('Hola mundo')
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    const data = {
+      cpf,
+      first_name: firstName,
+      last_name: lastName,
+      gender,
+      password,
+      year_of_birth: yearOfBirth,
+      address,
+      mail,
+      mobile_number: mobileNumber,
+      state,
+      user_type: userType
+    }
+
+    const response = await createUser(data)
+
+    const status = response.status
+
+    if (status === 200) {
+      toast.success('User registrado!')
+
+      setCpf('')
+      setFirstName('')
+      setLastName('')
+      setGender(true)
+      setPassword('')
+      setPassword2('')
+      setYearOfBirth(1900)
+      setAddress('')
+      setMail('')
+      setMobileNumber('')
+      setState(true)
+      setUserType(false)
+
+      Router.push('/posts/login')
+    } else {
+      toast.error('Usuario não registrado!')
+    }
   }
 
   return (
     <div className={styles.container}>
+      <Toaster position="top-center" reverseOrder={false} />
+
       <div className={styles.content}>
         <div className={styles.gridHeader}>
           <Link href="/posts/login" passHref>
@@ -177,7 +223,7 @@ export function CreateAccount() {
               </div>
             </fieldset>
 
-            <button type="submit">Entrar</button>
+            <button type="submit">Criar</button>
           </form>
         </div>
       </div>
