@@ -89,7 +89,10 @@ export function Login() {
           <footer>
             <div className={styles.separator}>ou</div>
             <span>
-              Crie sua conta <a href="#">Aqui!</a>
+              Crie sua conta{' '}
+              <Link href="/posts/createAccount" passHref>
+                Aqui
+              </Link>
             </span>
           </footer>
         </div>
