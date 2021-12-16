@@ -1,0 +1,127 @@
+.container {
+  background: var(--background);
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 7rem);
+  border-radius: 0 0 30px 30px;
+  border: 1px solid var(--pink-300);
+  border-top: none;
+
+  background: var(--white);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
+
+  .contentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+
+    background: var(--pink-300);
+
+    h1 {
+      color: var(--white);
+      font-size: 3rem;
+      font-weight: 500;
+    }
+  }
+
+  .contentMain {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 4rem;
+
+    .contentMainGrid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--pink-300);
+      border-radius: 30px;
+      padding: 1.5rem;
+      min-height: 300px;
+      max-width: 250px;
+
+      img {
+        height: 3rem;
+        width: 3rem;
+      }
+
+      h3 {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0 1.5rem 0;
+      }
+
+      > span + span {
+        font-weight: 700;
+        margin: 0.5rem 0 1rem 0;
+      }
+
+      button {
+        a {
+          color: var(--white);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  // .left {
+  //   margin-left: 4rem;
+  //   display: grid;
+  //   grid-template-rows: 2fr 1fr 1fr 4fr;
+
+  //   span {
+  //     display: flex;
+  //     align-items: flex-end;
+  //     color: var(--separator);
+  //   }
+
+  //   h1 {
+  //     font-size: 4.5rem;
+  //   }
+
+  //   h2 {
+  //     font-size: 2rem;
+  //     color: var(--pink-300);
+  //   }
+
+  //   .actions {
+  //     > div {
+  //       margin-bottom: 2rem;
+  //       border-left: 3px solid var(--pink-100);
+  //       padding-left: 0.5rem;
+
+  //       span {
+  //         display: flex;
+  //         align-items: flex-start;
+  //         color: var(--separator);
+  //         &:first-child {
+  //           margin-bottom: 0.5rem;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // .right {
+  //   display: flex;
+  //   align-items: center;
+
+  //   @media (max-width: 800px) {
+  //     display: none;
+  //   }
+  // }
+}

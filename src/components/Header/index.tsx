@@ -22,7 +22,7 @@ export function Header() {
           <Link href="/posts/services">
             <a>Serviços</a>
           </Link>
-          <Link href="/">
+          <Link href="/posts/contact">
             <a>Contato</a>
           </Link>
         </div>
