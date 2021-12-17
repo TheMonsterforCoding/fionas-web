@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7.5vh;
+  right: 23.3vw;
+
+  width: 12rem;
+
+  background: var(--pink-300);
+  gap: 1rem;
+  padding: 1rem;
+
+  button {
+    background: #000;
+  }
+
+  a {
+    color: var(--white);
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,12 +1,23 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { UserInfo } from '../../components/UserInfo'
 import LogoImg from '../../assets/fionas.png'
 import UserImg from '../../assets/user.svg'
-
 import styles from './styles.module.scss'
 
 export function Header() {
+  const [userInfo, setUserInfo] = useState(false)
+
+  function handleUserInfo() {
+    if (userInfo) {
+      setUserInfo(false)
+    } else {
+      setUserInfo(true)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -27,11 +38,14 @@ export function Header() {
           </Link>
         </div>
 
-        <Link href="/posts/login" passHref>
-          <button type="button">
+        <div className={styles.userInfo}>
+          {/* <Link href="/posts/login" passHref> */}
+          <button type="button" onClick={handleUserInfo}>
             <Image src={UserImg} alt="user" />
           </button>
-        </Link>
+          {/* </Link> */}
+          {userInfo ? <UserInfo /> : <></>}
+        </div>
       </div>
     </div>
   )
