@@ -22,7 +22,7 @@ export function UserInfo() {
       <Link href="/">
         <a>Pets</a>
       </Link>
-      <Link href="/">
+      <Link href="/posts/userUpdate">
         <a>Editar perfil</a>
       </Link>
 
