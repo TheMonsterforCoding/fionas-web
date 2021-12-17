@@ -11,8 +11,6 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 
 export function Login() {
-  const router = useRouter()
-
   const [cpf, setCpf] = useState('')
   const [password, setPassword] = useState('')
 
@@ -63,7 +61,6 @@ export function Login() {
                   id="cpf"
                   value={cpf}
                   onChange={event => setCpf(event.target.value)}
-                  placeholder="exemplo@exemplo.com"
                   required
                 />
               </div>
@@ -75,7 +72,6 @@ export function Login() {
                   id="password"
                   value={password}
                   onChange={event => setPassword(event.target.value)}
-                  placeholder="xxxxxxxxxxx"
                   required
                 />
               </div>
