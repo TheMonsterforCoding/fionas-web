@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import DogImg from '../../assets/dog-day.jpg'
 import { Button } from '../Button'
@@ -18,7 +19,11 @@ export function Main() {
               <span>Conheça nossos melhores planos</span>
               <span>Presenteie seu mascote</span>
             </div>
-            <Button>Nossos Serviços</Button>
+            <Button>
+              <Link href="/posts/services">
+                <a>Nossos Serviços</a>
+              </Link>
+            </Button>
           </div>
         </div>
         <div className={styles.right}>

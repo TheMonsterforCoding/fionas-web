@@ -14,9 +14,9 @@ export function Header() {
           <Image src={LogoImg} alt="logo" />
 
           <Link href="/">
-            <a className={styles.active}>Home</a>
+            <a>Home</a>
           </Link>
-          <Link href="/">
+          <Link href="/posts/aboutUs">
             <a>Sobre nós</a>
           </Link>
           <Link href="/posts/services">
