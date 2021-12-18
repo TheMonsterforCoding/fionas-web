@@ -1,6 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-
+import Image from 'next/image'
 import DogImg from '../../assets/dog-day.jpg'
 import { Button } from '../Button'
 
