@@ -15,6 +15,7 @@ export function UserInfo() {
     if (token) {
       localStorage.removeItem('jwt');
       localStorage.removeItem('cpf');
+      localStorage.removeItem('uid');
     } 
   }
 

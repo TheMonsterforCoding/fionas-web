@@ -13,7 +13,7 @@ interface CustomerHasPetsProviderProps {
   children: ReactNode
 }
 
-interface CustomerHasPet {
+export interface CustomerHasPet {
   id: number
   customers_has_pets_pets_id: number
   customers_has_pets_customers_id: number
@@ -32,7 +32,8 @@ export function CustomerHasPetsProvider({ children }: CustomerHasPetsProviderPro
   const [customerHasPets, setCustomerHasPets] = useState<CustomerHasPet[]>([])
 
   useEffect(() => {
-    api.get('/customers_has_pets').then(response => setCustomerHasPets(response.data))
+    api.get('/customers_has_pets').then(response => {setCustomerHasPets(response.data)
+    })
   }, [])
 
   async function createCustomerHasPet(customerHasPetCreate: CustomerHasPetCreate) {
