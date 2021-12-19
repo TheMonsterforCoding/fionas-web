@@ -18,7 +18,7 @@ export function ResetPassword() {
     event.preventDefault()
     var rand = require('csprng');
  
-    rand(160, 36)
+    rand()
     console.log(rand)
   }
 
