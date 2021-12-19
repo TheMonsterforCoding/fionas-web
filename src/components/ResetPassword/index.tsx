@@ -2,7 +2,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
-
+import { random } from '@lukeed/csprng'
+import emailjs from 'emailjs-com'
 
 import BackImg from '../../assets/back.svg'
 
@@ -11,17 +12,46 @@ import Link from 'next/link'
 
 export function ResetPassword() {
   const router = useRouter()
+  const [cpf, setCpf] = useState('')
   const [email, setEmail] = useState('')
+  const [templateParams, setValues] = useState({
+    to_name: '',
+    password_reset: '',
+    to_email: ''
+  })
+  const [status, setStatus] = useState('')
 
-  async function handleSubmit(event: FormEvent) {
-    // Prever que la app no haga reload al mandar el formulario
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    var rand = require('csprng');
- 
-    rand()
-    console.log(rand)
+    const array = random(5)
+    templateParams.to_name = 'Leandro'
+    templateParams.password_reset = array.join('')
+    templateParams.to_email = email
+    console.log(templateParams)
+    console.log(cpf)
+    console.log(email)
+  /*   emailjs
+      .send(
+        'service_qhj620j',
+        'template_ke0tnwd',
+        templateParams,
+        'user_hsknESf3YNNrbTxa7JSt2'
+      )
+      .then(
+        response => {
+          console.log('SUCCESS!', response)
+          setValues({
+            to_name: '',
+            password_reset: '',
+            to_email: ''
+          })
+          setStatus('SUCCESS')
+        },
+        error => {
+          console.log('FAILED...', error)
+        }
+      ) */
   }
-
 
   return (
     <div className={styles.container}>
@@ -44,6 +74,16 @@ export function ResetPassword() {
           <form onSubmit={handleSubmit}>
             <fieldset>
               <div className={styles.inputBlock}>
+                <label htmlFor="cpf">CPF</label>
+                <input
+                  type="cpf"
+                  id="cpf"
+                  value={cpf}
+                  onChange={event => setCpf(event.target.value)}
+                  required
+                />
+              </div>
+              <div className={styles.inputBlock}>
                 <label htmlFor="email">E-mail</label>
                 <input
                   type="email"
@@ -53,7 +93,6 @@ export function ResetPassword() {
                   required
                 />
               </div>
-
             </fieldset>
             <button type="submit">Enviar correio</button>
           </form>

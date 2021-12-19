@@ -25,19 +25,20 @@ export function Login() {
         password: password
       })
       .then(function (response) {
-        let [cpf, user_type, token] = response.data
+        let [ cpf, user_type, token ] = response.data
         console.log(response)
 
-        if (user_type) {
+        
+        if(user_type){
           //Desarrollo local
-          router.push('http://localhost:3300/')
+          router.push('http://localhost:3300/');
 
           //Server
           //router.push('http://18.219.7.122/fionas-admin');
           //TODO: enviar token como parámetro a web de admin
-        } else {
-          localStorage.setItem('cpf', cpf)
-          localStorage.setItem('jwt', token)
+        }else{
+          localStorage.setItem('cpf', cpf);
+          localStorage.setItem('jwt', token);
           router.push('/posts/requestService')
         }
 
@@ -48,11 +49,10 @@ export function Login() {
         console.log(error)
         toast.error('Usuario incorreto')
         setShow(!show)
+        
       })
   }
-
   const [show, setShow] = useState(false);
-
   return (
     <div className={styles.container}>
       <div>
@@ -104,8 +104,8 @@ export function Login() {
                 </span>
                ) : (<></>)} 
               </div>
-              
             </fieldset>
+
             <button type="submit">Login</button>
           </form>
         </div>
