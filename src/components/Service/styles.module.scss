@@ -3,7 +3,7 @@
   grid-template-rows: 1fr 5fr 1fr;
 
   width: 18rem;
-  height: 25rem;
+  height: 24rem;
 
   .gridTitle {
     background: var(--pink-100);
@@ -24,6 +24,8 @@
     padding: 1.5rem 2rem;
 
     text-align: justify;
+    color: #000;
+    font-weight: 500;
   }
 
   .gridButton {
