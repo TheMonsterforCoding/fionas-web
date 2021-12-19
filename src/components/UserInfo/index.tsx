@@ -6,12 +6,16 @@ import styles from './styles.module.scss'
 export function UserInfo() {
   const [login, setLogin] = useState(false)
 
+  let token = localStorage.getItem('jwt');
+  let logged: boolean;
+
+  logged = token ? true : false;
+
   function handleLogin() {
-    if (login) {
-      setLogin(false)
-    } else {
-      setLogin(true)
-    }
+    if (token) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('cpf');
+    } 
   }
 
   return (
@@ -26,13 +30,12 @@ export function UserInfo() {
         <a>Editar perfil</a>
       </Link>
 
-      {login ? (
+      {logged ? (
         <Link href="/">
           <a onClick={handleLogin}>Fechar sessão</a>
         </Link>
       ) : (
-        // <Link href="/posts/login">
-        <Link href="/">
+        <Link href="/posts/login">
           <a onClick={handleLogin}>Login</a>
         </Link>
       )}

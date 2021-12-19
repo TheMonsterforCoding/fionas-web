@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 
@@ -10,6 +11,7 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 
 export function Login() {
+  const router = useRouter()
   const [cpf, setCpf] = useState('')
   const [password, setPassword] = useState('')
 
@@ -23,9 +25,25 @@ export function Login() {
         password: password
       })
       .then(function (response) {
+        let [ cpf, user_type, token ] = response.data
         console.log(response)
-        toast.success(`'Usuario Correto | Token: ' ${response.data}`)
-        // router.push('/')
+
+        
+        if(user_type){
+          //Desarrollo local
+          router.push('http://localhost:3300/');
+
+          //Server
+          //router.push('http://18.219.7.122/fionas-admin');
+          //TODO: enviar token como parámetro a web de admin
+        }else{
+          localStorage.setItem('cpf', cpf);
+          localStorage.setItem('jwt', token);
+          router.push('/posts/requestService')
+        }
+
+        ///toast.success(`'Usuario Correto | Token: ' ${response.data}`)
+        //router.push('/posts/home')
       })
       .catch(function (error) {
         console.log(error)
