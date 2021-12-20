@@ -18,20 +18,21 @@ export function UserInfo() {
 
   return (
     <div className={styles.container}>
-      <Link href="/">
-        <a>Serviços</a>
-      </Link>
-      <Link href="/posts/newPet">
-        <a>Pets</a>
-      </Link>
-      <Link href="/posts/userUpdate">
-        <a>Editar perfil</a>
-      </Link>
-
       {logged ? (
-        <Link href="/">
-          <a onClick={handleLogin}>Fechar sessão</a>
-        </Link>
+        <>
+          <Link href="/">
+            <a>Serviços</a>
+          </Link>
+          <Link href="/posts/newPet">
+            <a>Pets</a>
+          </Link>
+          <Link href="/posts/userUpdate">
+            <a>Editar perfil</a>
+          </Link>
+          <Link href="/">
+            <a onClick={handleLogin}>Fechar sessão</a>
+          </Link>
+        </>
       ) : (
         <Link href="/posts/login">
           <a onClick={handleLogin}>Login</a>
