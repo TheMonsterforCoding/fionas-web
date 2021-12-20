@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useEffect, useState, FormEvent } from 'react'
 import {
-  Trash2,
-  Edit2,
   User,
   Mail,
   Users as Gen,
@@ -11,12 +7,12 @@ import {
   Phone,
   MapPin
 } from '@styled-icons/feather'
+import toast, { Toaster } from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
-import api from '../../services/api'
-import BackImg from '../../assets/back.svg'
-import styles from './styles.module.scss'
-import { Toaster } from 'react-hot-toast'
 import { Button } from '../Button'
+import api from '../../services/api'
+import styles from './styles.module.scss'
 
 type UserProps = {
   address: string
@@ -25,6 +21,7 @@ type UserProps = {
   first_name: string
   gender: boolean
   id: string
+  password: string
   last_name: string
   mail: string
   mobile_number: string
@@ -35,48 +32,139 @@ type UserProps = {
 }
 
 export function UserUpdate() {
-  const [user, setUser] = useState<UserProps>()
-  const idUser = '092e6f80-a620-4e4a-a0de-02a7131de661'
+  const router = useRouter()
+  const [user, setUser] = useState<UserProps>({
+    id: 'loading',
+    cpf: 'loading',
+    first_name: 'loading',
+    last_name: 'loading',
+    gender: true,
+    password: 'loading',
+    year_of_birth: 0,
+    address: 'loading',
+    mail: 'loading',
+    mobile_number: 'loading',
+    state: false,
+    user_type: false,
+    created_at: 'loading',
+    updated_at: 'loading'
+  })
 
   const [cpf, setCpf] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [gender, setGender] = useState(true)
-  const [password, setPassword] = useState('')
-  const [password2, setPassword2] = useState('')
-  const [yearOfBirth, setYearOfBirth] = useState(1900)
-  const [address, setAddress] = useState('')
   const [mail, setMail] = useState('')
   const [mobileNumber, setMobileNumber] = useState('')
+  const [password, setPassword] = useState('')
   const [state, setState] = useState(true)
   const [userType, setUserType] = useState(false) // Cliente
+  // const [gender, setGender] = useState(true)
+  // const [yearOfBirth, setYearOfBirth] = useState(1900)
+  // const [address, setAddress] = useState('')
+  const [password2, setPassword2] = useState('')
 
   useEffect(() => {
-    async function selectUserById() {
-      await api.get(`/users/${idUser}`).then(response => {
-        setUser(response.data)
-      })
+    const idUser = localStorage.getItem('uid')
+
+    api.get(`/users/${idUser}`).then(response => setUser(response.data))
+  }, [])
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    let newCpf = ''
+    let newFirstName = ''
+    let newLastName = ''
+    let newMail = ''
+    let newMobileNumber = ''
+    let newPassword = ''
+    let newState = true
+    let newUserType = true
+
+    if (cpf === '') {
+      newCpf = user.cpf
+    } else {
+      newCpf = cpf
+    }
+    if (firstName === '') {
+      newFirstName = user.first_name
+    } else {
+      newFirstName = firstName
+    }
+    if (lastName === '') {
+      newLastName = user.last_name
+    } else {
+      newLastName = lastName
+    }
+    if (password === '') {
+      newPassword = user.password
+    } else {
+      newPassword = password
+    }
+    if (mail === '') {
+      newMail = user.mail
+    } else {
+      newMail = mail
+    }
+    if (mobileNumber === '') {
+      newMobileNumber = user.mobile_number
+    } else {
+      newMobileNumber = mobileNumber
+    }
+    if (state === user.state) {
+      newState = user.state
+    } else {
+      newState = state
+    }
+    if (userType === user.user_type) {
+      newUserType = user.user_type
+    } else {
+      newUserType = userType
     }
 
-    selectUserById()
-  }, [])
+    try {
+      const response = await api.put(`/users/${user.id}`, {
+        cpf: newCpf,
+        first_name: newFirstName,
+        last_name: newLastName,
+        mail: newMail,
+        mobile_number: newMobileNumber,
+        state: newState,
+        user_type: newUserType,
+        password: newPassword
+      })
+
+      const status = response.status
+
+      if (status === 200) {
+        toast.success('Usuário atualizado com susseso!')
+
+        setCpf('')
+        setFirstName('')
+        setLastName('')
+        setMail('')
+        setMobileNumber('')
+        setState(true)
+        setUserType(true)
+        setPassword('')
+
+        router.push('http://localhost:3000/')
+      } else {
+        toast.error('Usuário no fue atualizado!')
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className={styles.container}>
-      <div>
-        <Toaster position="top-center" reverseOrder={false} />
-      </div>
+      <Toaster position="top-center" reverseOrder={false} />
 
       <div className={styles.content}>
-        <div className={styles.contentHeader}>
-          <Link href="/" passHref>
-            <a>
-              <Image src={BackImg} alt="Voltar" />
-            </a>
-          </Link>
-          <h1>Editar Perfil</h1>
-          <div />
-        </div>
+        <header>
+          <h1>Editar perfil</h1>
+        </header>
 
         <main>
           <div className={styles.contentUserInfo}>
@@ -122,8 +210,20 @@ export function UserUpdate() {
           </div>
 
           <div className={styles.contentUserInfoUpdate}>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <fieldset>
+                {/* --------------- CPF --------------- */}
+                <div className={styles.inputBlock}>
+                  <label htmlFor="cpf">CPF</label>
+                  <input
+                    type="text"
+                    id="cpf"
+                    value={cpf}
+                    onChange={event => setCpf(event.target.value)}
+                    placeholder={user?.cpf}
+                  />
+                </div>
+
                 {/* --------------- First Name --------------- */}
                 <div className={styles.inputBlock}>
                   <label htmlFor="firstName">Nome</label>
@@ -133,7 +233,6 @@ export function UserUpdate() {
                     value={firstName}
                     onChange={event => setFirstName(event.target.value)}
                     placeholder={user?.first_name}
-                    required
                   />
                 </div>
 
@@ -146,7 +245,6 @@ export function UserUpdate() {
                     value={lastName}
                     onChange={event => setLastName(event.target.value)}
                     placeholder={user?.last_name}
-                    required
                   />
                 </div>
 
@@ -159,7 +257,6 @@ export function UserUpdate() {
                     value={mail}
                     onChange={event => setMail(event.target.value)}
                     placeholder={user?.mail}
-                    required
                   />
                 </div>
 
@@ -172,89 +269,36 @@ export function UserUpdate() {
                     value={mobileNumber}
                     onChange={event => setMobileNumber(event.target.value)}
                     placeholder={user?.mobile_number}
-                    required
                   />
                 </div>
 
                 {/* --------------- Password --------------- */}
                 <div className={styles.inputBlock}>
-                  <label htmlFor="lastName">Contrasenha</label>
+                  <label htmlFor="password">Contrasenha</label>
                   <input
                     type="password"
-                    id="lastName"
-                    value={lastName}
-                    onChange={event => setLastName(event.target.value)}
+                    id="password"
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
                     placeholder="**********"
-                    required
                   />
                 </div>
 
                 {/* --------------- Password repeat --------------- */}
                 <div className={styles.inputBlock}>
-                  <label htmlFor="lastName">Confirmar contrasenha</label>
+                  <label htmlFor="password2">Confirmar contrasenha</label>
                   <input
                     type="password"
-                    id="lastName"
-                    value={lastName}
-                    onChange={event => setLastName(event.target.value)}
+                    id="password2"
+                    value={password2}
+                    onChange={event => setPassword2(event.target.value)}
                     placeholder="**********"
-                    required
                   />
                 </div>
               </fieldset>
 
               <div>
-                <Button>Atualizar</Button>
-              </div>
-            </form>
-          </div>
-
-          <div className={styles.contentPetInfo}>
-            <span className={styles.titleMain}>Detalhes dos Pets</span>{' '}
-            {/* ------ Name ------ */}
-            <div className={styles.petInfo}>
-              <User />
-              <span>{user?.first_name}</span>
-            </div>
-            {/* ------ Gender ------ */}
-            <div className={styles.petInfo}>
-              <Gen />
-              {user?.gender ? <span>masculino</span> : <span>Femenino</span>}
-            </div>
-            {/* ------ Year of birth ------ */}
-            <div className={styles.petInfo}>
-              <Watch />
-              <span>{user?.year_of_birth}</span>
-            </div>
-            <div className={styles.petInfoActions}>
-              <button>
-                <Edit2 />
-              </button>
-              <button>
-                <Trash2 />
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.contentPetInfoUpdate}>
-            <form action="">
-              <fieldset>
-                {/* --------------- Name --------------- */}
-                <div className={styles.inputBlock}>
-                  <label htmlFor="firstName">Nome</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    value={firstName}
-                    onChange={event => setFirstName(event.target.value)}
-                    placeholder={user?.first_name}
-                    required
-                  />
-                </div>
-              </fieldset>
-
-              <div>
-                <Button>Atualizar</Button>
+                <Button type="submit">Atualizar</Button>
               </div>
             </form>
           </div>
