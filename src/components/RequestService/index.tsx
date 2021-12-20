@@ -76,6 +76,7 @@ export function RequestService() {
         petId === cHasPets.customers_has_pets_pets_id
       )
     })
+    console.log(chosenPet)
 
     if (selectedService === 1) {
       const serviceData = {

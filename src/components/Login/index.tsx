@@ -38,7 +38,7 @@ export function Login() {
           localStorage.setItem('cpf', cpf);
           localStorage.setItem('uid', user_id);
           localStorage.setItem('jwt', token);
-          router.push('/posts/requestService')
+          router.push('/')
         }
 
         ///toast.success(`'Usuario Correto | Token: ' ${response.data}`)
@@ -47,9 +47,11 @@ export function Login() {
       .catch(function (error) {
         console.log(error)
         toast.error('Usuario incorreto')
+        setShow(!show)
+        
       })
   }
-
+  const [show, setShow] = useState(false);
   return (
     <div className={styles.container}>
       <div>
@@ -90,6 +92,16 @@ export function Login() {
                   onChange={event => setPassword(event.target.value)}
                   required
                 />
+              </div>
+              <div className={styles.inputBlock}>
+              {show ? (
+                <span className={styles.divShow}>
+                  Esqueceu a sua senha?{' '}
+                  <Link href="/posts/resetPassword" passHref>
+                    <a>Clique aqui</a>
+                  </Link>
+                </span>
+               ) : (<></>)} 
               </div>
             </fieldset>
 
