@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 router.pathname == '/posts/services' ||
                 router.pathname == '/posts/contact' ||
                 router.pathname == '/posts/newPet' ||
+                router.pathname == '/posts/myServices' ||
                 router.pathname == '/posts/userUpdate' ||
                 router.pathname == '/posts/requestService' ? (
                   <Header />
