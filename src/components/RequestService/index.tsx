@@ -196,7 +196,7 @@ export function RequestService() {
               </div>
             </div>
 
-            <div className={styles.ButtonAction}>
+            <div>
               <Button onClick={handleSubmit}>
                 {loading ? 'Solicitando serviço' : 'Solicitar'}
                 <ClipLoader
