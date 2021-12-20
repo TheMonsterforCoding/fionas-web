@@ -25,19 +25,18 @@ export function Login() {
         password: password
       })
       .then(function (response) {
-        let [ cpf, user_type, token ] = response.data
-        console.log(response)
-
-        
+        let [ cpf, user_id, user_type, token ] = response.data
+              
         if(user_type){
           //Desarrollo local
           router.push('http://localhost:3300/');
 
           //Server
-          //router.push('http://18.219.7.122/fionas-admin');
+          //router.push('http://18.219.7.122/fionas-admin/');
           //TODO: enviar token como parámetro a web de admin
         }else{
           localStorage.setItem('cpf', cpf);
+          localStorage.setItem('uid', user_id);
           localStorage.setItem('jwt', token);
           router.push('/posts/requestService')
         }

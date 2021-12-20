@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Button } from '../Button'
 
 import styles from './styles.module.scss'
@@ -8,6 +10,13 @@ interface ServiceProps {
 }
 
 export function Service({ title, description }: ServiceProps) {
+  const router = useRouter()
+  let logged = localStorage.getItem('jwt');
+
+  function handleRequest() {
+    logged ? router.push('/posts/requestService') : router.push('/posts/login')
+  }
+
   return (
     <div className={styles.containerGrid}>
       <div className={styles.gridTitle}>
@@ -17,7 +26,9 @@ export function Service({ title, description }: ServiceProps) {
         <p>{description}</p>
       </div>
       <div className={styles.gridButton}>
-        <Button>Solicitar</Button>
+        <Button onClick={handleRequest}>
+            Solicitar
+        </Button>
       </div>
     </div>
   )
