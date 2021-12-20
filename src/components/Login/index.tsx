@@ -38,7 +38,7 @@ export function Login() {
           localStorage.setItem('cpf', cpf);
           localStorage.setItem('uid', user_id);
           localStorage.setItem('jwt', token);
-          router.push('/posts/requestService')
+          router.push('/')
         }
 
         ///toast.success(`'Usuario Correto | Token: ' ${response.data}`)

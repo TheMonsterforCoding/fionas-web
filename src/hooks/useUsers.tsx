@@ -25,6 +25,7 @@ interface User {
   mail: string
   mobile_number: string
   state: boolean
+  user_type: boolean
   created_at: string
   updated_at: string
 }
