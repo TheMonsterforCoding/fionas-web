@@ -1,22 +1,19 @@
-import { useState } from 'react'
 import Link from 'next/link'
 
 import styles from './styles.module.scss'
 
 export function UserInfo() {
-  const [login, setLogin] = useState(false)
+  let token = localStorage.getItem('jwt')
+  let logged: boolean
 
-  let token = localStorage.getItem('jwt');
-  let logged: boolean;
-
-  logged = token ? true : false;
+  logged = token ? true : false
 
   function handleLogin() {
     if (token) {
-      localStorage.removeItem('jwt');
-      localStorage.removeItem('cpf');
-      localStorage.removeItem('uid');
-    } 
+      localStorage.removeItem('jwt')
+      localStorage.removeItem('cpf')
+      localStorage.removeItem('uid')
+    }
   }
 
   return (
@@ -24,7 +21,7 @@ export function UserInfo() {
       <Link href="/">
         <a>Serviços</a>
       </Link>
-      <Link href="/">
+      <Link href="/posts/newPet">
         <a>Pets</a>
       </Link>
       <Link href="/posts/userUpdate">

@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 router.pathname == '/posts/aboutUs' ||
                 router.pathname == '/posts/services' ||
                 router.pathname == '/posts/contact' ||
+                router.pathname == '/posts/newPet' ||
                 router.pathname == '/posts/requestService' ? (
                   <Header />
                 ) : null}
