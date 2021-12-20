@@ -8,7 +8,7 @@ import { useCustomers } from '../../hooks/useCustomers'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import pt from 'date-fns/locale/pt'
 import 'react-datepicker/dist/react-datepicker.css'
-import toast from 'react-hot-toast'
+import toast, {Toaster} from 'react-hot-toast'
 import ClipLoader from 'react-spinners/ClipLoader'
 registerLocale('pt', pt)
 
@@ -35,12 +35,17 @@ export function RequestService() {
     date.setDate(date.getDate() + 2)
   }
 
+  let initialPetId: number = 0
+  if (customerHasPets.length > 0) {
+    initialPetId = customerHasPets[0].customers_has_pets_pets_id
+  }
+
   // State Handlers
   const [loading, setLoading] = useState(false)
   const [selectedService, setSelectedService] = useState(1)
   const [selectedDate, setSelectedDate] = useState(date)
   const [selectedTime, setSelectedTime] = useState(1)
-  const [petId, setPetId] = useState(0)
+  const [petId, setPetId] = useState(initialPetId)
 
   const filteredCustomer = customers.filter(
     customer => customer.customers_users_id === uid
@@ -76,7 +81,6 @@ export function RequestService() {
         petId === cHasPets.customers_has_pets_pets_id
       )
     })
-    console.log(chosenPet)
 
     if (selectedService === 1) {
       const serviceData = {
@@ -125,6 +129,7 @@ export function RequestService() {
 
   return (
     <div className={styles.container}>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <div className={styles.formInputs}>
@@ -197,7 +202,7 @@ export function RequestService() {
               </div>
             </div>
 
-            <div className={styles.ButtonAction}>
+            <div>
               <Button onClick={handleSubmit}>
                 {loading ? 'Solicitando serviço' : 'Solicitar'}
                 <ClipLoader
