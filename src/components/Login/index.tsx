@@ -109,7 +109,7 @@ export function Login() {
           </form>
         </div>
 
-        <div className={styles.gridFooter}>
+        {/* <div className={styles.gridFooter}>
           <footer>
             <div className={styles.separator}>ou</div>
             <span>
@@ -119,7 +119,7 @@ export function Login() {
               </Link>
             </span>
           </footer>
-        </div>
+        </div> */}
       </div>
     </div>
   )
