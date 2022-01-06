@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import Router from 'next/router'
 
 import { usePets } from '../../hooks/usePets'
 import { useCustomerHasPets } from '../../hooks/useCustomerHasPets'
@@ -68,15 +69,16 @@ export default function NewPet() {
 
     const idPet = Number(response.data.id)
 
-    console.log(idPet)
+    // console.log(idPet)
 
     if (status === 200) {
+      toast.success('Pet registrado com susseso!')
+
       const dataCustomerHasPet = {
         customers_has_pets_pets_id: idPet,
-        customers_has_pets_customers_id: customer[0].id
+        // customers_has_pets_customers_id: customer[0].id
+        customers_has_pets_customers_id: 6
       }
-
-      // console.log(dataCustomerHasPet)
 
       await createCustomerHasPet(dataCustomerHasPet)
 
@@ -87,7 +89,7 @@ export default function NewPet() {
       setBreed('')
       setState(true)
 
-      toast.success('Pet registrado com susseso!')
+      Router.push('/')
     } else {
       toast.error('Pet não foi registrado!')
     }

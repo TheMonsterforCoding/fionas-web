@@ -8,8 +8,9 @@ import { useCustomers } from '../../hooks/useCustomers'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import pt from 'date-fns/locale/pt'
 import 'react-datepicker/dist/react-datepicker.css'
-import toast, {Toaster} from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import ClipLoader from 'react-spinners/ClipLoader'
+import Router from 'next/router'
 registerLocale('pt', pt)
 
 import styles from './styles.module.scss'
@@ -84,7 +85,8 @@ export function RequestService() {
 
     if (selectedService === 1) {
       const serviceData = {
-        services_apply_customers_has_pets_id: chosenPet[0].id,
+        // services_apply_customers_has_pets_id: chosenPet[0].id,
+        services_apply_customers_has_pets_id: 16,
         services_apply_services_state_id: 1,
         services_apply_services_id: selectedService,
         part_day: selectedTime,
@@ -95,7 +97,8 @@ export function RequestService() {
       status = response.status
     } else {
       const serviceBanho = {
-        services_apply_customers_has_pets_id: chosenPet[0].id,
+        // services_apply_customers_has_pets_id: chosenPet[0].id,
+        services_apply_customers_has_pets_id: 16,
         services_apply_services_state_id: 1,
         services_apply_services_id: 1,
         part_day: selectedTime,
@@ -103,7 +106,8 @@ export function RequestService() {
       }
 
       const serviceTaxi = {
-        services_apply_customers_has_pets_id: chosenPet[0].id,
+        // services_apply_customers_has_pets_id: chosenPet[0].id,
+        services_apply_customers_has_pets_id: 16,
         services_apply_services_state_id: 1,
         services_apply_services_id: 2,
         part_day: selectedTime,
@@ -122,6 +126,10 @@ export function RequestService() {
 
     if (status === 200) {
       toast.success('Serviço solicitado!')
+
+      setTimeout(() => {
+        Router.push('/')
+      }, 2000)
     } else {
       toast.error('Não foi possível solicitar o serviço')
     }

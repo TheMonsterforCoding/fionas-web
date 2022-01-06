@@ -25,19 +25,19 @@ export function Login() {
         password: password
       })
       .then(function (response) {
-        let [ cpf, user_id, user_type, token ] = response.data
-              
-        if(user_type){
+        let [cpf, user_id, user_type, token] = response.data
+
+        if (user_type) {
           //Desarrollo local
-          router.push('http://localhost:3300/');
+          router.push('http://localhost:3300/')
 
           //Server
           //router.push('http://18.219.7.122/fionas-admin/');
           //TODO: enviar token como parámetro a web de admin
-        }else{
-          localStorage.setItem('cpf', cpf);
-          localStorage.setItem('uid', user_id);
-          localStorage.setItem('jwt', token);
+        } else {
+          localStorage.setItem('cpf', cpf)
+          localStorage.setItem('uid', user_id)
+          localStorage.setItem('jwt', token)
           router.push('/')
         }
 
@@ -48,10 +48,9 @@ export function Login() {
         console.log(error)
         toast.error('Usuario incorreto')
         setShow(!show)
-        
       })
   }
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <div className={styles.container}>
       <div>
@@ -80,6 +79,7 @@ export function Login() {
                   value={cpf}
                   onChange={event => setCpf(event.target.value)}
                   required
+                  autoComplete="off"
                 />
               </div>
 
@@ -91,17 +91,20 @@ export function Login() {
                   value={password}
                   onChange={event => setPassword(event.target.value)}
                   required
+                  autoComplete="off"
                 />
               </div>
               <div className={styles.inputBlock}>
-              {show ? (
-                <span className={styles.divShow}>
-                  Esqueceu a sua senha?{' '}
-                  <Link href="/posts/resetPassword" passHref>
-                    <a>Clique aqui</a>
-                  </Link>
-                </span>
-               ) : (<></>)} 
+                {show ? (
+                  <span className={styles.divShow}>
+                    Esqueceu a sua senha?{' '}
+                    <Link href="/posts/resetPassword" passHref>
+                      <a>Clique aqui</a>
+                    </Link>
+                  </span>
+                ) : (
+                  <></>
+                )}
               </div>
             </fieldset>
 

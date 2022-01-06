@@ -95,6 +95,7 @@ export function CreateAccount() {
                     value={cpf}
                     onChange={event => setCpf(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -107,6 +108,7 @@ export function CreateAccount() {
                     value={firstName}
                     onChange={event => setFirstName(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -119,6 +121,7 @@ export function CreateAccount() {
                     value={lastName}
                     onChange={event => setLastName(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -170,6 +173,7 @@ export function CreateAccount() {
                     value={password}
                     onChange={event => setPassword(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -182,6 +186,7 @@ export function CreateAccount() {
                     value={password2}
                     onChange={event => setPassword2(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -194,6 +199,7 @@ export function CreateAccount() {
                     value={address}
                     onChange={event => setAddress(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -206,6 +212,7 @@ export function CreateAccount() {
                     value={mail}
                     onChange={event => setMail(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
 
@@ -218,6 +225,7 @@ export function CreateAccount() {
                     value={mobileNumber}
                     onChange={event => setMobileNumber(event.target.value)}
                     required
+                    autoComplete="off"
                   />
                 </div>
               </div>

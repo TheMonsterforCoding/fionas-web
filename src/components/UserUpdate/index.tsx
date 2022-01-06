@@ -9,6 +9,7 @@ import {
 } from '@styled-icons/feather'
 import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 import { Button } from '../Button'
 import api from '../../services/api'
@@ -49,6 +50,8 @@ export function UserUpdate() {
     created_at: 'loading',
     updated_at: 'loading'
   })
+
+  const [isLoading, setIsLoading] = useState(true)
 
   const [cpf, setCpf] = useState('')
   const [firstName, setFirstName] = useState('')
@@ -139,16 +142,20 @@ export function UserUpdate() {
       if (status === 200) {
         toast.success('Usuário atualizado com susseso!')
 
-        setCpf('')
-        setFirstName('')
-        setLastName('')
-        setMail('')
-        setMobileNumber('')
-        setState(true)
-        setUserType(true)
-        setPassword('')
+        setTimeout(() => {
+          // setIsLoading(false)
 
-        router.push('http://localhost:3000/')
+          setCpf('')
+          setFirstName('')
+          setLastName('')
+          setMail('')
+          setMobileNumber('')
+          setState(true)
+          setUserType(true)
+          setPassword('')
+
+          Router.push('/')
+        }, 2000)
       } else {
         toast.error('Usuário no fue atualizado!')
       }
