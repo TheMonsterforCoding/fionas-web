@@ -31,7 +31,7 @@ export function Contact() {
             <Image src={EmailImg} alt="Email" />
             <h3>E-mail</h3>
             <span>Tem alguma dúvida?</span>
-            <span>fionaspetshop@hotmail.com</span>
+            <span>contacto email</span>
 
             <Button>
               <a target="_blank" rel="noopener noreferrer" href={urlAPIHotmail}>
