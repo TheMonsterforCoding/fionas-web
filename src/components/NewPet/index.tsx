@@ -77,6 +77,7 @@ export default function NewPet() {
       const dataCustomerHasPet = {
         customers_has_pets_pets_id: idPet,
         // customers_has_pets_customers_id: customer[0].id
+        /****** Estatico ******/
         customers_has_pets_customers_id: 6
       }
 

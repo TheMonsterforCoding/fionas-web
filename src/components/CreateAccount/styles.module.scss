@@ -61,6 +61,11 @@
           justify-content: space-between;
           gap: 2rem;
 
+          @media (max-width: 800px) {
+            display: flex;
+            flex-direction: column;
+          }
+
           .inputBlock {
             display: flex;
             flex-direction: column;
