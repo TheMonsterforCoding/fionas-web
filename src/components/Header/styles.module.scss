@@ -14,7 +14,22 @@
     border: 1px solid var(--pink-300);
     border-bottom: none;
 
+    .menuAction {
+      @media (min-width: 801px) {
+        display: none;
+      }
+
+      img {
+        height: 2.5rem;
+        width: 2.5rem;
+      }
+    }
+
     .actions {
+      @media (max-width: 800px) {
+        display: none;
+      }
+
       img {
         height: 3rem;
         width: 3rem;
@@ -45,6 +60,10 @@
     }
 
     .userInfo {
+      // @media (max-width: 768px) {
+      //   display: none;
+      // }
+
       button {
         background: var(--pink-300);
         border-radius: 50%;

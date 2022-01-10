@@ -21,6 +21,12 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
+
+      @media (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   }
 }

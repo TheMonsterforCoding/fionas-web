@@ -33,6 +33,17 @@
       font-size: 3rem;
       font-weight: 500;
     }
+
+    @media (max-width: 800px) {
+      display: flex;
+      height: 0;
+
+      h1 {
+        color: var(--black);
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
   }
 
   .contentMain {
@@ -43,7 +54,24 @@
     padding: 1rem;
     gap: 4rem;
 
+    @media (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     .contentMainGrid {
+      @media (max-width: 800px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: 400px;
+        width: 400px;
+        height: 10px;
+        min-height: 100px;
+
+        gap: 1rem;
+      }
+
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -51,22 +79,43 @@
       border-radius: 30px;
       padding: 1.5rem;
       min-height: 300px;
-      max-width: 250px;
+      max-width: 200px;
+      width: 250px;
 
       img {
         height: 3rem;
         width: 3rem;
+
+        @media (max-width: 800px) {
+          height: 2rem;
+          width: 2rem;
+        }
       }
 
       h3 {
         display: flex;
         justify-content: center;
         margin: 1rem 0 1.5rem 0;
+
+        @media (max-width: 800px) {
+          display: none;
+        }
       }
 
-      > span + span {
+      span {
+        @media (max-width: 800px) {
+          display: none;
+        }
+      }
+
+      .infoImportant {
         font-weight: 700;
         margin: 0.5rem 0 1rem 0;
+
+        @media (max-width: 800px) {
+          display: flex;
+          margin: 0;
+        }
       }
 
       button {
@@ -124,4 +173,39 @@
   //     display: none;
   //   }
   // }
+}
+
+.containerLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100vh - 7rem);
+  border-radius: 0 0 30px 30px;
+  border: 1px solid var(--pink-300);
+  border-top: none;
+
+  background: var(--white);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+
+  .loader {
+    border: 5px solid var(--white);
+    border-top: 5px solid var(--pink-300);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

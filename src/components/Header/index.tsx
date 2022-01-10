@@ -3,24 +3,34 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { UserInfo } from '../../components/UserInfo'
+import { MenuInfo } from '../../components/MenuInfo'
 import LogoImg from '../../assets/fionas.png'
 import UserImg from '../../assets/user.svg'
+import MenuImg from '../../assets/menu.svg'
 import styles from './styles.module.scss'
 
 export function Header() {
   const [userInfo, setUserInfo] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   function handleUserInfo() {
-    if (userInfo) {
-      setUserInfo(false)
-    } else {
-      setUserInfo(true)
-    }
+    setUserInfo(!userInfo)
+  }
+
+  function handleMenuOpen() {
+    setMenuOpen(!menuOpen)
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
+        <div className={styles.menuAction}>
+          <button onClick={handleMenuOpen}>
+            <Image src={MenuImg} alt="menu" />
+          </button>
+          {menuOpen ? <MenuInfo /> : <></>}
+        </div>
+
         <div className={styles.actions}>
           <Image src={LogoImg} alt="logo" />
 

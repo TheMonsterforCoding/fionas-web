@@ -1,8 +1,11 @@
+import { AllHTMLAttributes } from 'react'
 import Link from 'next/link'
 
 import styles from './styles.module.scss'
 
-export function UserInfo() {
+type UserInfoProps = AllHTMLAttributes<HTMLDivElement>
+
+export function UserInfo({ ...props }: UserInfoProps) {
   let token = localStorage.getItem('jwt')
   let logged: boolean
 
@@ -17,12 +20,12 @@ export function UserInfo() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} {...props}>
       {logged ? (
         <>
-          <Link href="/posts/myServices">
+          {/* <Link href="/posts/myServices">
             <a>Meus Serviços</a>
-          </Link>
+          </Link> */}
           <Link href="/posts/newPet">
             <a>Meus Pets</a>
           </Link>

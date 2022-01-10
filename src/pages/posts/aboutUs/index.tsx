@@ -1,6 +1,4 @@
-// import { AboutUs } from '../../components/AboutUs'
-// import { Header } from '../../components/Header'
-
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,9 +6,16 @@ import DogImg from '../../../assets/dog-day.jpg'
 import { Button } from '../../../components/Button'
 import styles from './styles.module.scss'
 
+export default function AboutUs() {
+  const [isLoading, setIsLoading] = useState(false)
 
-export default function aboutUs() {
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }, [])
+
+  return !isLoading ? (
     <>
       <div className={styles.container}>
         <div className={styles.content}>
@@ -28,10 +33,10 @@ export default function aboutUs() {
               <div className={styles.contentMainGrid}>
                 <h3>Missão</h3>
                 <p>
-                  Oferecer o melhor atendimento profissional ao cliente, graças ao
-                  trabalho de especialistas capacitados que trabalham com produtos
-                  de alta qualidade, priorizando o cuidado e o bem-estar dos
-                  animais de estimação.
+                  Oferecer o melhor atendimento profissional ao cliente, graças
+                  ao trabalho de especialistas capacitados que trabalham com
+                  produtos de alta qualidade, priorizando o cuidado e o
+                  bem-estar dos animais de estimação.
                 </p>
               </div>
 
@@ -39,9 +44,9 @@ export default function aboutUs() {
                 <h3>Visão</h3>
                 <p>
                   Ser uma empresa moderna e sólida, referência em qualidade e
-                  cuidado com animais de estimação na região, aumentando a demanda
-                  pelos serviços gradativamente e gerando reconhecimento estadual
-                  da empresa.
+                  cuidado com animais de estimação na região, aumentando a
+                  demanda pelos serviços gradativamente e gerando reconhecimento
+                  estadual da empresa.
                 </p>
               </div>
 
@@ -55,6 +60,9 @@ export default function aboutUs() {
         </div>
       </div>
     </>
+  ) : (
+    <div className={styles.containerLoader}>
+      <div className={styles.loader}></div>
+    </div>
   )
 }
-

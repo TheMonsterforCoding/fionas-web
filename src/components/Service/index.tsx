@@ -11,7 +11,9 @@ interface ServiceProps {
 
 export function Service({ title, description }: ServiceProps) {
   const router = useRouter()
-  let logged = localStorage.getItem('jwt');
+  let logged = localStorage.getItem('jwt')
+
+  console.log(logged)
 
   function handleRequest() {
     logged ? router.push('/posts/requestService') : router.push('/posts/login')
@@ -26,9 +28,7 @@ export function Service({ title, description }: ServiceProps) {
         <p>{description}</p>
       </div>
       <div className={styles.gridButton}>
-        <Button onClick={handleRequest}>
-            Solicitar
-        </Button>
+        <Button onClick={handleRequest}>Solicitar</Button>
       </div>
     </div>
   )
